@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="shortcut icon" href="/images/Main Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <section>
+        <aside class="dashboard-nav">
+            <div class="nav-container">
+                <div class="user-info">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <h3 id="userName">Administrator Name</h3>
+                    <p id="userEmail">juan.delacruz@gmail.com</p>
+                </div>
+                <i id="arm-burger" class="fa-solid fa-bars arm-burger"></i>
+                <nav>
+                    <ul class="d-none">
+                        <li>
+                            <a href="/dashboard.html">
+                                <i class="fa-solid fa-table-columns"></i>
+                                <p>Dashboard</p>
+                            </a>                        
+                        </li>
+                        <li class="active">
+                            <a href="/admin-profile.html">
+                                <i class="fa-regular fa-house"></i>
+                                <p>Admin Profile</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="/registration.html">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                                <p>Registration</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="/plan.html">
+                                <i class="fa-regular fa-address-book"></i>
+                                <p>Plan</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="/payment.html">
+                                <i class="fa-regular fa-credit-card"></i>
+                                <p>Payment</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="/inventory.html">
+                                <i class="fa-solid fa-box-archive"></i>
+                                <p>Inventory</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="/members.html">
+                                <i class="fa-solid fa-user-group"></i>
+                                <p>View Members</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa-solid fa-dumbbell"></i>
+                                <p>Coaches</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa-solid fa-book-open"></i>
+                                <p>Report</p>
+                            </a>                        
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="logout-btn-container">
+                <button onclick="logout()" class="logout-btn">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <p>Logout</p>
+                </button>
+            </div>
+        </aside>
+
+         <div class="dashboard">
+            <div class="dashboard-header">
+                <div>
+                    <a href="/dashboard.html">
+                        <img src="./images/dashboard logo.png" alt="dashboard logo">
+                    </a>
+                </div>
+                <div>
+                    <a href="">Feedback</a>
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+            </div>
+
+            <div class="admin-page">
+                <h2>Admin Information</h2>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <div class="user-profile">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <div id="updateProfile" class="update-profile">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                                <span>Update Profile</span>
+                            </div>
+                        </div>
+                        <div class="user-info">
+                            <div>
+                                <span>Username:</span>
+                                <span id="username">JuanDelaCruz</span>
+                            </div>
+                            <div>
+                                <span>Contact no.:</span>
+                                <span id="contact">09123456789</span>
+                            </div>
+                            <div>
+                                <span>Email:</span>
+                                <span id="email">juan.delacruz@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="input-container">
+                            <div class="input">
+                                <label for="username">Username</label>
+                                <input class="dis" disabled id="usernameInput" type="text">
+                            </div>
+                            <div class="input">
+                                <label for="contact">Contact No.</label>
+                                <input class="dis" disabled id="contactInput" type="tel">
+                            </div>
+                            <div class="input">
+                                <label for="email">Email Address</label>
+                                <input class="dis" disabled id="emailInput" type="email">
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button id="saveBtn" disabled onclick="updateUserDetails()">
+                                Save
+                            </button>
+                            <button id="cancel" onclick="cancelDisabled()">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="register-admin-btn">
+                        Register New Admin Account
+                    </div>
+                    <div class="grid-item">
+                        <div class="input-container">
+                            <div class="input">
+                                <label for="username">Current Password</label>
+                                <input class="dis" disabled id="currentPassword" type="text">
+                            </div>
+                            <div class="input">
+                                <label for="contact">New Password</label>
+                                <input class="dis" disabled id="newPassword" type="tel">
+                            </div>
+                            <div class="input">
+                                <label for="email">Re-type Password</label>
+                                <input class="dis" disabled id="newRe-password" type="email">
+                            </div>
+                        </div>
+                        <p id="passwordError" class="errorP"></p>
+                        <div class="action-buttons">
+                            <button onclick="updateUserPass()">
+                                Change
+                            </button>
+                            <button onclick="cancelDisabled()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

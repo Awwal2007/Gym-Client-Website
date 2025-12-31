@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="shortcut icon" href="/images/Main Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <section>
+        <aside class="dashboard-nav">
+            <div class="nav-container">
+                <div class="user-info">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <h3 id="userName"></h3>
+                    <p id="userEmail"></p>
+                </div>
+                <i id="arm-burger" class="fa-solid fa-bars arm-burger"></i>
+                <nav>
+                    <ul class="d-none">
+                        <li>
+                            <a href="/dashboard.html">
+                                <i class="fa-solid fa-table-columns"></i>
+                                <p>Dashboard</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="/admin-profile.html">
+                                <i class="fa-regular fa-house"></i>
+                                <p>Admin Profile</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="/registration.html">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                                <p>Registration</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="/plan.html">
+                                <i class="fa-regular fa-address-book"></i>
+                                <p>Plan</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="/payment.html">
+                                <i class="fa-regular fa-credit-card"></i>
+                                <p>Payment</p>
+                            </a>                        
+                        </li>
+                        <li class="active">
+                            <a href="/inventory.html">
+                                <i class="fa-solid fa-box-archive"></i>
+                                <p>Inventory</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="/members.html">
+                                <i class="fa-solid fa-user-group"></i>
+                                <p>View Members</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa-solid fa-dumbbell"></i>
+                                <p>Coaches</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa-solid fa-book-open"></i>
+                                <p>Report</p>
+                            </a>                        
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="logout-btn-container">
+                <button id="logoutBtn" onclick="logout()" class="logout-btn">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <p>Logout</p>
+                </button>
+            </div>
+        </aside>
+
+        <div class="dashboard">
+            <div class="dashboard-header">
+                <div>
+                    <a href="/dashboard.html">
+                        <img src="./images/dashboard logo.png" alt="dashboard logo">
+                    </a>
+                </div>
+                <div>
+                    <a href="">Feedback</a>
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+            </div>
+
+            <div class="inventory">
+                <div>
+                    <button onclick="openPopUp()" id="addBtn" class="add-equipment">Add Equipment</button>
+                </div>
+
+                <div class="overlay">
+                    <form class="inventory-form">
+                        <div class="form-fields">
+                            <h3>Add Equipment</h3>
+                            <div class="form-image">
+                                <div class="image-content">
+                                    <label class="imageInpt" for="imageInpt">
+                                        Attach File <i class="fa-regular fa-file-image"></i>
+                                        <div id="selectedImageName"></div>
+                                    </label>
+                                    
+                                    <input id="imageInpt" type="file" hidden>
+                                </div>
+                                <div>
+                                    <img width="130" id="previewImage" src="" alt="selected image">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="equipmentNameInp">Equipment Name</label>
+                                <input type="text" id="equipmentNameInp">
+                                <p id="equipmentNameErr"></p>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; width: 100%; gap: 10px;">
+                                <div class="form-group">
+                                    <label for="statusInp">Status</label>
+                                    <select name="status" id="statusInp">
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select>
+                                    <p id="statusInpErr"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="equipmentTotalInp">Total No.</label>
+                                    <input type="number" id="equipmentTotalInp">
+                                    <p id="equipmentTotalErr"></p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-buttons">
+                            <a id="cancelBtn" class="white-button">Cancel</a>
+                            
+                            <button id="saveBtn" type="submit" class="tertiary-button">Save Changes</button>
+                            <a class="tertiary-button" id="submitEdited" class="white-button">Edit</a>
+                        </div>
+                    </form>
+                    <div onclick="closePopUp()" class="closeButton">
+                        x
+                    </div>
+                </div>
+            </div>
+            <div class="inventory-table">
+                <div class="inventory-table-header">
+                    <div class="entity">
+                        <p>Show Entities</p>
+                        <select onclick="displayEquipment()" id="entity">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+                    <div class="search-container">
+                        <input type="search" placeholder="search" id="searchInp">
+                        <i id="searchBtn" onclick="searchByName()" class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <th>Equipment Name</th>
+                        <th>Status</th>
+                        <th>Total Amount</th>
+                        <th>Edit</th>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <script src="inventory.js"></script>
+</body>
+</html>

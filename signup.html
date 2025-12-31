@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/images/Main Logo.png" type="image/x-icon">
+</head>
+<body>
+    <section class="login">
+        
+        <div class="signin-container">
+            <div class="signin-form">
+                <h2>Create an account</h2>
+                <form id="form">
+                    <div class="input-container">
+                        <label for="username">Username*</label>
+                        <input id="username" type="text">
+                    </div>
+                    <div>
+                        <p class="errorP" id="usernameErr"></p>
+                    </div>
+                    <div class="input-container">
+                        <label for="email">Email*</label>
+                        <input id="email" type="email">
+                    </div>
+                    <div>
+                        <p class="errorP" id="emailErr"></p>
+                    </div>
+                    <div class="input-container">
+                        <label for="password">Create Password*</label>
+                        <input id="password" type="password">
+                    </div>
+                    <div>
+                        <p class="errorP" id="passwordErr"></p>
+                    </div>
+                    <div class="input-container">
+                        <label for="reTypePassword">Re-type Password*</label>
+                        <input id="reTypePassword" type="password">
+                    </div>
+
+                    <div>
+                        <p class="errorP" id="retypePassErr"></p>
+                    </div>
+                    
+                    <div class="checkbox-container">
+                        <div class="check" for="terms">
+                            <input type="checkbox" name="terms" id="terms">
+                            Accept all the Terms and Conditions
+                        </div>
+                    </div>
+                    <div>
+                        <p class="errorP" id="checkboxErr"></p>
+                    </div>
+                    <div class="login-button">
+                        <button type="submit">Register</button>
+                    </div>
+                    <div class="login-button">
+                        Already have an account? <a href="./index.html">Login</a>
+                    </div>
+                </form>
+            </div>
+            <div class="signin-illustration">
+                <img src="./images/Main Logo.png" alt="signin-illustration">
+            </div>
+        </div>
+    </section>
+    
+
+    <script src="signup.js"></script>
+</body>
+</html>

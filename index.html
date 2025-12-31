@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/images/Main Logo.png" type="image/x-icon">
+</head>
+<body>
+    <section class="login">
+        
+        <div class="signin-container">
+            <div class="signin-form">
+                <h2>Sign-in</h2>
+                <form id="form">
+                    <div class="input-container">
+                        <label for="email">Email*</label>
+                        <input id="email" type="email">
+                    </div>
+                    <div class="input-container">
+                        <label for="password">Password*</label>
+                        <input id="password" type="password">
+                    </div>
+                    <div class="checkbox-container">
+                        <div class="check" for="check">
+                            <input type="checkbox" name="check" id="check">
+                            Remember me
+                        </div>
+                        <a href="" class="forget-password">Forget Password?</a>
+                    </div>
+
+                    <div class="login-button">
+                        <p class="errorP" id="errorP"></p>
+                    </div>
+
+                    <div class="login-button">
+                        <button type="submit">Login</button>
+                    </div>
+
+                    <div class="login-button">
+                        <a href="./signup.html">Create an Account</a>
+                    </div>
+                </form>
+            </div>
+            <div class="signin-illustration">
+                <img src="./images/Main Logo.png" alt="signin-illustration">
+            </div>
+        </div>
+    </section>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>

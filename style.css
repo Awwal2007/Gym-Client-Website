@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@452&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Rufina:wght@400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #ece9e9;
+    padding: 0px 120px;
+    font-family: "Poppins", sans-serif;
+}
+
+h1{
+    font-weight: 600;
+}
+h2{
+    /* font-weight: 600; */
+    color: #1A1363;
+}
+.login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+    height: 100vh;
+}
+
+/* .login h2{
+    margin-bottom: 40px;
+} */
+
+.signin-container{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.signin-container .signin-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.signin-container .signin-form form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+}
+.signin-container .signin-form .input-container{
+    display: flex;
+    flex-direction: column;
+}
+.signin-container .signin-form label{
+    color: #1A1363;
+    font-weight: 700;
+}
+.signin-container .signin-form input{
+    border: 2px solid #1A1363;
+    font-weight: 600;
+    border-radius: 8px;
+    height: 40px;
+    padding: 0px 10px;
+}
+.checkbox-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.checkbox-container .check{
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: #77749B;
+}
+.checkbox-container .forget-password{
+    font-size: 14px;
+    text-decoration: none;
+    color: #1A1363;
+}
+
+.login-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.login-button button{
+    background: #1A1363;
+    border-radius: 20px;
+    padding: 14px 40px;
+    font-size: 1rem;
+    font-weight: 550;
+    border: none;
+    color: white;
+    width: 100%;
+    cursor: pointer;
+}
+.login-button a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #1A1363;
+    font-weight: 600;
+}
+
+
+.signin-illustration{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signin-illustration img{
+    width: 500px;
+}
+.errorP{
+    font-size: 14px;
+    color: red;
+    width: 100%;
+    /* text-align: center; */
+}
+
+/* Media Query */
+
+
+
+@media screen and (max-width: 1068px) {
+    .signin-illustration{
+        display: none;
+    }
+    .signin-container{
+        width: 100%;
+    }
+    .signin-form{
+        width: 100%;
+    }
+    .login{
+        padding: 0px;
+    }
+    
+    form{
+        width: 100% !important;
+        padding: 0px;
+    }
+    .input-container input{
+        width: 100%;
+    }
+
+}
+@media screen and (max-width: 768px) {
+    body{
+        padding: 0px 30px;
+    }
+}

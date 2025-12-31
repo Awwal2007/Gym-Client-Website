@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="shortcut icon" href="/images/Main Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <section>
+        <aside class="dashboard-nav">
+            <div class="nav-container">
+                <div class="user-info">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <h3 id="userName"></h3>
+                    <p id="userEmail"></p>
+                </div>
+                <i id="arm-burger" class="fa-solid fa-bars arm-burger"></i>
+                <nav>
+                    <ul class="d-none">
+                        <li>
+                            <a href="/dashboard.html">
+                                <i class="fa-solid fa-table-columns"></i>
+                                <p>Dashboard</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="/admin-profile.html">
+                                <i class="fa-regular fa-house"></i>
+                                <p>Admin Profile</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="/registration.html">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                                <p>Registration</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="/plan.html">
+                                <i class="fa-regular fa-address-book"></i>
+                                <p>Plan</p>
+                            </a>                        
+                        </li>
+                        <li class="active">
+                            <a href="/payment.html">
+                                <i class="fa-regular fa-credit-card"></i>
+                                <p>Payment</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="/inventory.html">
+                                <i class="fa-solid fa-box-archive"></i>
+                                <p>Inventory</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="/members.html">
+                                <i class="fa-solid fa-user-group"></i>
+                                <p>View Members</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa-solid fa-dumbbell"></i>
+                                <p>Coaches</p>
+                            </a>                        
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa-solid fa-book-open"></i>
+                                <p>Report</p>
+                            </a>                        
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="logout-btn-container">
+                <button id="logoutBtn" onclick="logout()" class="logout-btn">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <p>Logout</p>
+                </button>
+            </div>
+        </aside>
+
+        <div class="dashboard">
+            <div class="dashboard-header">
+                <div>
+                    <a href="/dashboard.html">
+                        <img src="./images/dashboard logo.png" alt="dashboard logo">
+                    </a>
+                </div>
+                <div>
+                    <a href="">Feedback</a>
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+            </div>
+
+            <div class="registration-content">
+                <div>
+                    <h2>Point of Sale</h2>
+                    <h1>Add Payment</h1>
+                </div>
+
+                <form class="registration-form" action="">
+                    <div class="form-fields">
+                        <div class="left-field">
+                            <div class="form-group">
+                                <label for="nameOfMemInp">Name of Member</label>
+                                <input type="text" id="nameOfMemInp">
+                            </div>
+                            <div class="form-group">
+                                <label for="dateJoinInp">Date Join</label>
+                                <input type="date" id="dateJoinInp">
+                            </div>
+                            
+                        </div>
+                        <div class="right-field">
+                            <div style="display: flex; gap: 20px;">
+                                <div class="form-group">
+                                    <label for="planInp">Plan</label>
+                                    <input type="text" id="planInp">
+                                </div>
+                                <div class="form-group">
+                                    <label for="priceInp">Price</label>
+                                    <input type="text" id="priceInp">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button class="primary-button">Save</button>
+                        <button class="secondary-button">Cancel</button>
+                    </div>  
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
