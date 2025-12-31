@@ -9,6 +9,8 @@ const emailErr = document.getElementById("emailErr")
 const passwordErr = document.getElementById("passwordErr")
 const retypePassErr = document.getElementById("retypePassErr")
 const checkboxErr = document.getElementById("checkboxErr")
+const eyeIcon = document.getElementById("eye-icon")
+const eyeIcon2 = document.getElementById("eye-icon2")
 
 
 let userDetils = JSON.parse(localStorage.getItem("users")) || [];
@@ -18,7 +20,36 @@ function saveDetails(){
     localStorage.setItem("users", JSON.stringify(userDetils))
 }
 
+function retrieveEmailFromParams(){
+    const params = new URLSearchParams(window.location.search)
+    const paramsEmail = params.get("email")
+    const paramsPassword = params.get("pass")
+    if(paramsEmail) email.value = paramsEmail
+    if(paramsPassword) password.value = paramsPassword
+}
 
+retrieveEmailFromParams()
+
+eyeIcon.addEventListener("click", ()=>{
+    if(password.type === "password"){
+        password.type = "text"
+        eyeIcon.className = "fa-regular fa-eye-slash eye-icon"        
+    }else if(password.type === "text"){
+        password.type = "password"
+        eyeIcon.className = "fa-regular fa-eye eye-icon"
+    }
+})
+
+
+eyeIcon2.addEventListener("click", ()=>{
+    if(reTypePassword.type === "password"){
+        reTypePassword.type = "text"
+        eyeIcon2.className = "fa-regular fa-eye-slash eye-icon"      
+    }else if(reTypePassword.type === "text"){
+        reTypePassword.type = "password"
+        eyeIcon2.className = "fa-regular fa-eye eye-icon"        
+    }
+})
 
 
 form.addEventListener("submit", (e)=>{

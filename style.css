@@ -52,6 +52,7 @@ h2{
 .signin-container .signin-form .input-container{
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 .signin-container .signin-form label{
     color: #1A1363;
@@ -63,6 +64,13 @@ h2{
     border-radius: 8px;
     height: 40px;
     padding: 0px 10px;
+}
+.eye-icon{
+    position: absolute;
+    bottom: 12px;
+    right: 10px;
+    cursor: pointer;
+    color: #1A1363;
 }
 .checkbox-container{
     display: flex;

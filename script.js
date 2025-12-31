@@ -3,6 +3,7 @@ const errorP = document.getElementById("errorP")
 const email = document.getElementById("email")
 const password = document.getElementById("password")
 const checkBox = document.getElementById("check")
+const eyeIcon = document.getElementById("eye-icon")
 
 let userDetils = JSON.parse(localStorage.getItem("users")) || []
 
@@ -18,7 +19,6 @@ form.addEventListener("submit", (e)=>{
         return item.email === email.value
     })
 
-    console.log(find);
     
     
 
@@ -42,7 +42,7 @@ form.addEventListener("submit", (e)=>{
     }else{
         errorP.textContent = "No account found, create new account. redirecting ..."
         setTimeout(()=>{
-            location.href = "signup.html"
+            location.href = `signup.html?email=${email.value}&pass=${password.value}`
         }, 1000)
         return
     }
@@ -51,5 +51,15 @@ form.addEventListener("submit", (e)=>{
     form.reset()
 })
 
+
+eyeIcon.addEventListener("click", ()=>{
+    if(password.type === "password"){
+        password.type = "text"
+        eyeIcon.className = "fa-regular fa-eye-slash eye-icon"        
+    }else if(password.type === "text"){
+        password.type = "password"
+        eyeIcon.className = "fa-regular fa-eye eye-icon"
+    }
+})
 
 // const save
