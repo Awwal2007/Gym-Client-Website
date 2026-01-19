@@ -64,13 +64,13 @@
                             </a>                        
                         </li>
                         <li>
-                            <a href="">
+                            <a href="/coaches.html">
                                 <i class="fa-solid fa-dumbbell"></i>
                                 <p>Coaches</p>
                             </a>                        
                         </li>
                         <li>
-                            <a href="">
+                            <a href="/report.html">
                                 <i class="fa-solid fa-book-open"></i>
                                 <p>Report</p>
                             </a>                        
@@ -138,14 +138,14 @@
                 <div class="plan-table-header">
                     <div class="entity">
                         <p>Show Entities</p>
-                        <select onclick="displayPlan()" id="entity">
+                        <select id="entity">
                             <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="20">20</option>
                         </select>
                     </div>
                     <div class="search-container">
-                        <input type="search" placeholder="search" id="searchInp">
+                        <input type="search" oninput="searchByName()" placeholder="search" id="searchInp">
                         <i id="searchBtn" onclick="searchByName()" class="fa-solid fa-magnifying-glass"></i>
                     </div>
                 </div>

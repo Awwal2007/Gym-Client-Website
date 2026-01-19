@@ -64,7 +64,7 @@
                             </a>                        
                         </li>
                         <li>
-                            <a href="">
+                            <a href="/coaches.html">
                                 <i class="fa-solid fa-dumbbell"></i>
                                 <p>Coaches</p>
                             </a>                        
@@ -111,10 +111,12 @@
                             <div class="form-group">
                                 <label for="nameOfMemInp">Name of Member</label>
                                 <input type="text" id="nameOfMemInp">
+                                <p id="nameOfMemErr"></p>
                             </div>
                             <div class="form-group">
                                 <label for="dateJoinInp">Date Join</label>
                                 <input type="date" id="dateJoinInp">
+                                <p id="dateJoinErr"></p>
                             </div>
                             
                         </div>
@@ -123,23 +125,25 @@
                                 <div class="form-group">
                                     <label for="planInp">Plan</label>
                                     <input type="text" id="planInp">
+                                    <p id="planErr"></p>
                                 </div>
                                 <div class="form-group">
                                     <label for="priceInp">Price</label>
                                     <input type="text" id="priceInp">
+                                    <p id="priceErr"></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-buttons">
-                        <button class="primary-button">Save</button>
-                        <button class="secondary-button">Cancel</button>
+                        <button type="submit" class="primary-button">Save</button>
+                        <button type="reset" class="secondary-button">Cancel</button>
                     </div>  
                 </form>
             </div>
         </div>
     </section>
 
-    <script src="dashboard.js"></script>
+    <script src="payment.js"></script>
 </body>
 </html>

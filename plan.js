@@ -57,7 +57,11 @@ function logout() {
 
 armBurger.addEventListener("click", ()=> {
     const ul = document.querySelector("ul")
-
+    if(armBurger.classList.contains("fa-xmark")){
+        armBurger.classList.replace("fa-xmark", "fa-bars")
+    }else{
+        armBurger.classList.replace("fa-bars", "fa-xmark")
+    }
     ul.classList.toggle("d-none")
 })
 
@@ -120,21 +124,20 @@ function savePlanToLocalStorage (){
 }
 
 
-function displayPlan(){
+function displayPlan(data){
     
     tbody.innerHTML = ""
-    
-    const data = filteredPlan.length && searchInp.value.trim() ? filteredPlan : plan
+
 
     if(data.length === 0){
-        tbody.innerHTML = "No item found"
+        tbody.innerHTML = "No item match your search"
         return
     }
     
     data
-    .reverse()
-    .slice(0, select.value)
-    .forEach(item => {
+    // .reverse()
+    ?.slice(0, select.value)
+    ?.forEach(item => {
         const tr = document.createElement("tr")
         tr.innerHTML = `
             <td>${item.planName}</td>
@@ -150,21 +153,18 @@ function displayPlan(){
     
 }
 
-displayPlan()
+displayPlan(plan)
 
 function searchByName(){
-    const searchQuery = searchInp.value
+    const searchQuery = searchInp.value.toLowerCase()
 
     const filtered = plan.filter((item) => {
-        return item.planName.includes(searchQuery)
+        return item.planName.toLowerCase().includes(searchQuery)
     })
 
-    filteredPlan = filtered
+    filteredPlan = filtered    
 
-    console.log(filtered);
-    
-
-    displayPlan()
+    displayPlan(filteredPlan)
 }
 
 // clear the filtered when nothing is input in the search input
@@ -172,7 +172,6 @@ function searchByName(){
 searchInp.addEventListener("input", (e) => {
   if (!e.target.value.trim()) {
     filteredPlan = [];
-    displayPlan();
   }
 });
 
@@ -180,6 +179,10 @@ cancelBtn.addEventListener("click", ()=>{
     submitEdited.style.display = "none"
     saveBtn.style.display = "inline"
     form.reset()
+})
+
+select.addEventListener('change', ()=>{
+    displayPlan(plan)
 })
 
 

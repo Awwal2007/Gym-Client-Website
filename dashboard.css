@@ -886,6 +886,7 @@ section{
 .inventory-form .form-fields .form-image .image-content .imageInpt{
     cursor: pointer;
 }
+
 .inventory-form .form-fields .form-group{
     display: flex;
     flex-direction: column;
@@ -1007,6 +1008,152 @@ section{
 }
 
 
+.report-form{
+    /* background: #1A1363; */
+    background: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 3px 5px rgb(151, 151, 151);
+}
+
+.report-form .form-fields{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.report-form .form-fields .left-field{
+    width: 110%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+}
+.report-form .form-fields .form-group{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+.report-form .form-fields .form-group label{
+    color: black;
+    font-weight: bold;
+}
+.report-form .form-fields .form-group input{
+    width: 100% !important;
+    padding: 4px 8px;
+    background: rgb(188, 186, 186);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    height: 30px;
+    outline: none;
+}
+
+
+.report-form .form-fields .right-field{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+}
+.report-form .form-fields .right-field .form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.report-form .form-buttons{
+    align-self: flex-end;
+}
+
+
+
+.report-table{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: white;
+    padding: 10px 10px;
+    border-radius: 12px;
+    color: #1A1363;
+}
+.report-table .report-table-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.report-table .report-table-header .entity{
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+.report-table .report-table-header .entity p{
+    font-size: .8rem;
+    color: #1A1363;
+}
+.report-table .report-table-header .entity select{
+    font-size: .8rem;
+    border-radius: 10px;
+    padding: 3px 5px;
+    background: #555B95;
+    color: #1A1363;
+}
+
+.report-table .report-table-header .search-container{
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+.report-table .report-table-header .search-container #searchBtn{
+    cursor: pointer;
+}
+.report-table .report-table-header .search-container input{
+    background: #555B95;
+    border: none;
+    outline: none;
+    color: #1A1363;
+    padding: 4px 16px;
+    width: 150px;
+    border-radius: 10px;
+}
+.report-table .report-table-header .search-container input::placeholder{
+    color: #1A1363;
+}
+
+
+.report-table table{
+    border-collapse: collapse;
+    /* border: 1px solid black; */
+}
+.report-table table .editBtn{
+    padding: 2px 6px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.report-table table th,td{
+    /* border: 1px solid black; */
+    text-align: left;
+    padding: 6px 4px;
+}
+.report-table table tbody tr:nth-child(even){
+    background: #555B95;
+}
+#submitEdited{
+    display: none;
+    font-weight: bold;
+    font-size: .7rem !important;
+}
 
 
 

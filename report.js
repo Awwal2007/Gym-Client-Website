@@ -1,17 +1,11 @@
-const userName = document.getElementById("userName")
-const userEmail = document.getElementById("userEmail")
-const armBurger = document.getElementById("arm-burger")
-
-const searchInp = document.getElementById("searchInp")
-const searchBtn = document.getElementById("searchBtn")
-const form = document.querySelector("form")
-const select = document.querySelector(".entity select")
 const tbody = document.querySelector("table tbody")
 
 
 
 
-
+const userName = document.getElementById("userName")
+const userEmail = document.getElementById("userEmail")
+const armBurger = document.getElementById("arm-burger")
 
 const userToken = JSON.parse(localStorage.getItem("userToken")) || JSON.parse(sessionStorage.getItem("userToken")) || ""
 const users = JSON.parse(localStorage.getItem("users"))
@@ -26,18 +20,14 @@ function displayUserInfo() {
 
         userName.textContent = loggedUser.username
         userEmail.textContent = loggedUser.email
-        // greetingName.textContent = loggedUser.username.split(" ")[0]
     }else{
         alert("User Not logged in, Redirecting to login....")
         location.href = "index.html"
     }
 }
-
 displayUserInfo()
 
-
 // Logout Fuctionality
-
 function logout() {
     if(JSON.parse(localStorage.getItem("userToken")) || JSON.parse(sessionStorage.getItem("userToken"))){
         localStorage.removeItem("userToken")
@@ -57,77 +47,54 @@ armBurger.addEventListener("click", ()=> {
     ul.classList.toggle("d-none")
 })
 
+let filteredPayment = [];
 
-let members = JSON.parse(localStorage.getItem("members")) || [];
-let filteredMembers = [];
+const payments = JSON.parse(localStorage.getItem("payment"))
 
-
-
-function displayMembers(data){
-    
+function displayPayment(payment){
     tbody.innerHTML = ""
-
-    if(data.length === 0){
+    if(payment.length === 0){
         tbody.innerHTML = "No item match your search"
         return
     }
-    
-    data
-    ?.slice()
-    // .reverse()
-    // .sort((a,b)=>(b.createdAt -a.createdAt))
-    ?.slice(0, select.value)
-    .forEach(item => {
+
+    payment.forEach(item => {
         const tr = document.createElement("tr")
         tr.innerHTML = `
             <td>${item.name}</td>
-            <td>${item.id}</td>
             <td>${item.date}</td>
-            <td>
-                <button onclick="edit('${item.id}')" class="editBtn" >Edit</button>
-            </td>
+            <td>${item.plan}</td>
+            <td>${item.price}</td>
         `
         tbody.appendChild(tr)
     })
-    
-    
 }
 
-displayMembers(members)
-
-
-select.addEventListener('change', ()=>{
-    displayMembers(members)
-})
-
-
-function edit(id){
-    // const find = members.find(item => {
-    //     return item.id === id
-    // })
-    console.log(id);
-    
-    location.href = `registration.html?data=${id}`
-}
+displayPayment(payments)
 
 function searchByName(){
     const searchQuery = searchInp.value.toLowerCase()
 
 
-    const filtered = members.filter((item) => {
+
+    const filtered = payments.filter((item) => {
         return item.name.toLowerCase().includes(searchQuery)
     })
 
-    filteredMembers = filtered    
+    filteredPayment = filtered    
 
-    displayMembers(filteredMembers)
+    displayPayment(filteredPayment)
 }
 
 // clear the filtered when nothing is input in the search input
 
 searchInp.addEventListener("input", (e) => {
   if (!e.target.value.trim()) {
-    filteredMembers = [];
+    filteredCoach = [];
   }
 });
+
+select.addEventListener('change', ()=>{
+    displayPayment(payments)
+})
 

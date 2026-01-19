@@ -67,7 +67,11 @@ function logout() {
 
 armBurger.addEventListener("click", ()=> {
     const ul = document.querySelector("ul")
-
+    if(armBurger.classList.contains("fa-xmark")){
+        armBurger.classList.replace("fa-xmark", "fa-bars")
+    }else{
+        armBurger.classList.replace("fa-bars", "fa-xmark")
+    }
     ul.classList.toggle("d-none")
 })
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Report</title>
     <link rel="stylesheet" href="dashboard.css">
     <link rel="shortcut icon" href="/images/MainLogo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -15,8 +15,8 @@
             <div class="nav-container">
                 <div class="user-info">
                     <i class="fa-solid fa-circle-user"></i>
-                    <h3 id="userName">Administrator Name</h3>
-                    <p id="userEmail">juan.delacruz@gmail.com</p>
+                    <h3 id="userName"></h3>
+                    <p id="userEmail"></p>
                 </div>
                 <i id="arm-burger" class="fa-solid fa-bars arm-burger"></i>
                 <nav>
@@ -27,7 +27,7 @@
                                 <p>Dashboard</p>
                             </a>                        
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="/admin-profile.html">
                                 <i class="fa-regular fa-house"></i>
                                 <p>Admin Profile</p>
@@ -58,7 +58,7 @@
                             </a>                        
                         </li>
                         <li>
-                            <a href="/members.html">
+                            <a href="">
                                 <i class="fa-solid fa-user-group"></i>
                                 <p>View Members</p>
                             </a>                        
@@ -69,7 +69,7 @@
                                 <p>Coaches</p>
                             </a>                        
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="/report.html">
                                 <i class="fa-solid fa-book-open"></i>
                                 <p>Report</p>
@@ -79,14 +79,14 @@
                 </nav>
             </div>
             <div class="logout-btn-container">
-                <button onclick="logout()" class="logout-btn">
+                <button id="logoutBtn" onclick="logout()" class="logout-btn">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     <p>Logout</p>
                 </button>
             </div>
         </aside>
 
-         <div class="dashboard">
+        <div class="dashboard">
             <div class="dashboard-header">
                 <div>
                     <a href="/dashboard.html">
@@ -99,86 +99,60 @@
                 </div>
             </div>
 
-            <div class="admin-page">
-                <h2>Admin Information</h2>
-                <div class="grid-container">
-                    <div class="grid-item">
-                        <div class="user-profile">
-                            <i class="fa-solid fa-circle-user"></i>
-                            <div id="updateProfile" class="update-profile">
-                                <i class="fa-regular fa-pen-to-square"></i>
-                                <span>Update Profile</span>
+            <div class="report" style="display: flex; flex-direction: column; gap: 5px;">
+                <h1 style="color: #1A1363;">Sales Reports</h1>
+
+                <div class="report-form">
+                    <div class="form-fields">
+                        <div class="left-field">
+                            <div class="form-group">
+                                <label for="fromDateInp">From Date</label>
+                                <input type="date" id="fromDateInp">
+                                <p id="fromDateInpErr"></p>
                             </div>
                         </div>
-                        <div class="user-info">
-                            <div>
-                                <span>Username:</span>
-                                <span id="username">JuanDelaCruz</span>
-                            </div>
-                            <div>
-                                <span>Contact no.:</span>
-                                <span id="contact">09123456789</span>
-                            </div>
-                            <div>
-                                <span>Email:</span>
-                                <span id="email">juan.delacruz@gmail.com</span>
-                            </div>
+                        <div class="form-group">
+                            <label for="toDateInput">To Date</label>
+                            <input type="date" id="toDateInput">
+                            <p id="toDateInputErr"></p>
                         </div>
-                    </div>
-                    <div class="grid-item">
-                        <div class="input-container">
-                            <div class="input">
-                                <label for="username">Username</label>
-                                <input class="dis" disabled id="usernameInput" type="text">
+                        <div class="right-field">
+                            <div class="form-group">
+                                <label for="total">Total</label>
+                                <input type="number" id="total" disabled>
                             </div>
-                            <div class="input">
-                                <label for="contact">Contact No.</label>
-                                <input class="dis" disabled id="contactInput" type="tel">
-                            </div>
-                            <div class="input">
-                                <label for="email">Email Address</label>
-                                <input class="dis" disabled id="emailInput" type="email">
-                            </div>
-                        </div>
-                        <div class="action-buttons">
-                            <button id="saveBtn" disabled onclick="updateUserDetails()">
-                                Save
-                            </button>
-                            <button id="cancel" onclick="cancelDisabled()">Cancel</button>
-                        </div>
-                    </div>
-                    <div class="register-admin-btn">
-                        Register New Admin Account
-                    </div>
-                    <div class="grid-item">
-                        <div class="input-container">
-                            <div class="input">
-                                <label for="username">Current Password</label>
-                                <input class="dis" disabled id="currentPassword" type="text">
-                            </div>
-                            <div class="input">
-                                <label for="contact">New Password</label>
-                                <input class="dis" disabled id="newPassword" type="tel">
-                            </div>
-                            <div class="input">
-                                <label for="email">Re-type Password</label>
-                                <input class="dis" disabled id="newRe-password" type="email">
-                            </div>
-                        </div>
-                        <p id="passwordError" class="errorP"></p>
-                        <div class="action-buttons">
-                            <button onclick="updateUserPass()">
-                                Change
-                            </button>
-                            <button onclick="cancelDisabled()">Clear</button>
                         </div>
                     </div>
                 </div>
-                
+            </div>
+            <div class="report-table">
+                <div class="report-table-header">
+                    <div class="entity">
+                        <p>Show Entities</p>
+                        <select id="entity">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+                    <div class="search-container">
+                        <input type="search" oninput="searchByName()" placeholder="search" id="searchInp">
+                        <i id="searchBtn" onclick="searchByName()" class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <th>Member Name</th>
+                        <th>Date</th>
+                        <th>Plan</th>
+                        <th>Amount</th>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
         </div>
     </section>
 
-    <script src="dashboard.js"></script>
+    <script src="report.js"></script>
 </body>
 </html>

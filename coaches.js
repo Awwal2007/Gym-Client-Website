@@ -2,12 +2,12 @@ const userName = document.getElementById("userName")
 const userEmail = document.getElementById("userEmail")
 const armBurger = document.getElementById("arm-burger")
 
-const equipmentNameInp = document.getElementById("equipmentNameInp")
-const statusInp = document.getElementById("statusInp")
-const equipmentTotalInp = document.getElementById("equipmentTotalInp")
-const equipmentTotalErr = document.getElementById("equipmentTotalErr")
-const statusInpErr = document.getElementById("statusInpErr")
-const equipmentNameErr = document.getElementById("equipmentNameErr")
+const coachNameInp = document.getElementById("coachNameInp")
+const contactInp = document.getElementById("contactInp")
+const validityInp = document.getElementById("validityInp")
+const validityInpErr = document.getElementById("validityInpErr")
+const contactInpErr = document.getElementById("contactInpErr")
+const coachNameErr = document.getElementById("coachNameErr")
 const tbody = document.querySelector("table tbody")
 const saveBtn = document.getElementById("saveBtn")
 const submitEdited = document.getElementById("submitEdited")
@@ -70,8 +70,8 @@ armBurger.addEventListener("click", ()=> {
 })
 
 
-let equipment = JSON.parse(localStorage.getItem("equipment")) || [];
-let filteredEquipment = [];
+let coach = JSON.parse(localStorage.getItem("coach")) || [];
+let filteredCoach = [];
 
 
 imageInpt.addEventListener("change", (e)=>{
@@ -92,23 +92,25 @@ imageInpt.addEventListener("change", (e)=>{
 form.addEventListener("submit", (e)=>{
     e.preventDefault()
     
-    equipmentNameErr.textContent = ""
-    statusInpErr.textContent = ""
-    equipmentTotalErr.textContent = ""
+    coachNameErr.textContent = ""
+    contactInpErr.textContent = ""
+    validityInpErr.textContent = ""
 
-    if(!equipmentNameInp.value.trim()){
-        equipmentNameErr.style.color = "red"
-        equipmentNameErr.textContent = "Equipment Name is Required"
+    if(!coachNameInp.value.trim()){
+        coachNameErr.style.color = "red"
+        coachNameErr.textContent = "Coach Name is Required"
         return
     }
-    if(!equipmentTotalInp.value.trim()){
-        equipmentTotalErr.style.color = "red"
-        equipmentTotalErr.textContent = "equipment Amount is Required"
+
+    if(!contactInp.value.trim()){
+        contactInpErr.style.color = "red"
+        contactInpErr.textContent = "Coach Contact is Required"
         return
     }
-    if(!statusInp.value.trim()){
-        statusInpErr.style.color = "red"
-        statusInpErr.textContent = "equipment Validity is Required"
+
+    if(!validityInp.value.trim()){
+        validityInpErr.style.color = "red"
+        validityInpErr.textContent = "Coach Validity is Required"
         return
     }
     
@@ -119,43 +121,43 @@ form.addEventListener("submit", (e)=>{
 
     let formData = {
         id: id,
-        equipmentName: equipmentNameInp.value.trim(),
-        equipmentTotal: equipmentTotalInp.value.trim(),
-        equipmentStatus: statusInp.value.trim(),
-        equipmentImage: imageInpt.files[0],
+        coachName: coachNameInp.value.trim(),
+        validityInp: validityInp.value.trim(),
+        coachStatus: contactInp.value.trim(),
+        coachImage: imageInpt.files[0],
         createdAt: date
     }
 
     console.log(formData);
 
-    equipment.push(formData)
-    saveEquipmentToLocalStorage()
+    coach.push(formData)
+    saveCoachToLocalStorage()
 
-    equipmentNameErr.textContent = ""
-    statusInpErr.textContent = ""
-    equipmentTotalErr.textContent = ""
+    coachNameErr.textContent = ""
+    contactInpErr.textContent = ""
+    validityInpErr.textContent = ""
     selectedImageName.textContent = ""
     previewImage.src = ""
 
     form.reset()
-    displayEquipment()
+    displayCoach()
     closePopUp()
 })
 
-function saveEquipmentToLocalStorage (){
-    localStorage.setItem("equipment", JSON.stringify(equipment))
+function saveCoachToLocalStorage (){
+    localStorage.setItem("coach", JSON.stringify(coach))
 }
 
 
-function displayEquipment(data){
+function displayCoach(data){
     
     tbody.innerHTML = ""
-    
 
     if(data.length === 0){
         tbody.innerHTML = "No item match your search"
         return
     }
+    
     
     data
     ?.slice()
@@ -165,9 +167,9 @@ function displayEquipment(data){
     .forEach(item => {
         const tr = document.createElement("tr")
         tr.innerHTML = `
-            <td>${item.equipmentName}</td>
-            <td>${item.equipmentStatus}</td>
-            <td>${item.equipmentTotal}</td>
+            <td>${item.coachName}</td>
+            <td>${item.coachStatus}</td>
+            <td>${item.validityInp}</td>
             <td>
                 <button onclick="edit(${item.id})" class="editBtn">Edit</button>
             </td>
@@ -178,31 +180,28 @@ function displayEquipment(data){
     
 }
 
-displayEquipment(equipment)
+displayCoach(coach)
 
 function searchByName(){
     const searchQuery = searchInp.value.toLowerCase()
 
-    const filtered = equipment.filter((item) => {
-        return item.equipmentName.toLowerCase().includes(searchQuery)
+
+    const filtered = coach.filter((item) => {
+        return item.coachName.toLowerCase().includes(searchQuery)
     })
 
-    filteredEquipment = filtered    
+    filteredCoach = filtered    
 
-    displayEquipment(filteredEquipment)
+    displayCoach(filteredCoach)
 }
 
 // clear the filtered when nothing is input in the search input
 
 searchInp.addEventListener("input", (e) => {
   if (!e.target.value.trim()) {
-    filteredEquipment = [];
+    filteredCoach = [];
   }
 });
-
-select.addEventListener('change', ()=>{
-    displayEquipment(equipment)
-})
 
 cancelBtn.addEventListener("click", ()=>{
     submitEdited.style.display = "none"
@@ -213,23 +212,23 @@ cancelBtn.addEventListener("click", ()=>{
 
 submitEdited.addEventListener("click", async ()=>{
     
-    equipmentNameErr.textContent = ""
-    equipmentNameErr.textContent = ""
-    statusInpErr.textContent = ""
+    coachNameErr.textContent = ""
+    coachNameErr.textContent = ""
+    contactInpErr.textContent = ""
 
-    if(!equipmentNameInp.value.trim()){
-        equipmentNameErr.style.color = "red"
-        equipmentNameErr.textContent = "equipment Name is Required"
+    if(!coachNameInp.value.trim()){
+        coachNameErr.style.color = "red"
+        coachNameErr.textContent = "coach Name is Required"
         return
     }
-    if(!equipmentTotalInp.value.trim()){
-        equipmentTotalErr.style.color = "red"
-        equipmentTotalErr.textContent = "equipment Amount is Required"
+    if(!validityInp.value.trim()){
+        validityInpErr.style.color = "red"
+        validityInpErr.textContent = "coach contact is Required"
         return
     }
-    if(!statusInp.value.trim()){
-        statusInpErr.style.color = "red"
-        statusInpErr.textContent = "equipment Validity is Required"
+    if(!contactInp.value.trim()){
+        contactInpErr.style.color = "red"
+        contactInpErr.textContent = "coach Validity is Required"
         return
     }
     
@@ -238,18 +237,18 @@ submitEdited.addEventListener("click", async ()=>{
 
     let updatedData = {
         id: id,
-        equipmentName: equipmentNameInp.value.trim(),
-        equipmentTotal: equipmentTotalInp.value.trim(),
-        equipmentStatus: statusInp.value.trim(),
+        coachName: coachNameInp.value.trim(),
+        validityInp: validityInp.value.trim(),
+        coachStatus: contactInp.value.trim(),
         createdAt: date
     }
 
-    equipment.push(updatedData)
+    coach.push(updatedData)
 
-    await saveEquipmentToLocalStorage()
+    await saveCoachToLocalStorage()
 
     form.reset()
-    displayEquipment()
+    displayCoach()
     closePopUp()
 })
 
@@ -260,18 +259,18 @@ function edit(id){
     openPopUp()
 
 
-    const find = equipment.find(item => {
+    const find = coach.find(item => {
         return item.id === id
     })
 
-    equipmentNameInp.value = find.equipmentName    
-    equipmentTotalInp.value = find.equipmentTotal    
-    statusInp.value = find.equipmentStatus
+    coachNameInp.value = find.coachName    
+    validityInp.value = find.validityInp    
+    contactInp.value = find.coachStatus
 
 
-    const remainingEquipment = equipment.filter(item => item.id !== id)
+    const remainingCoach = coach.filter(item => item.id !== id)
     
-    equipment = remainingEquipment
+    coach = remainingCoach
 }
 
 
