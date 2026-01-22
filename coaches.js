@@ -295,8 +295,9 @@ function closePopUp(){
 // Alert Modal
 
 
+const modal = document.getElementById("successModal");
+
 function showModal(message, status) {
-  const modal = document.getElementById("successModal");
   modal.style.display = "flex";
 
   const modalMain = document.getElementById("modal-main");
@@ -316,7 +317,7 @@ function showModal(message, status) {
 
   setTimeout(() => {
     modal.style.display = "none";
-  }, 8000);
+  }, 4000);
 }
 
 function closeModal(){

@@ -44,10 +44,6 @@ function displayUserInfo() {
         // filter user data with this userToken
         loggedUser = users.find(f=> f.id === userToken)
 
-        // Display the loggedUser username and email
-        userName.textContent = loggedUser.username
-        userEmail.textContent = loggedUser.email
-
         // if greetingName display the user FirstName
         if(greetingName) greetingName.textContent = loggedUser.username.split(" ")[0]
 
@@ -102,84 +98,6 @@ armBurger.addEventListener("click", ()=> {
     ul.classList.toggle("d-none")
 })
 
-
-// Get coach data from localStorage
-const coach = JSON.parse(localStorage.getItem("coach"))
-
-// Display coach data
-function displayCoach(){
-    coachDisplay.innerHTML = ""
-    coach
-    ?.slice(0, 3)
-    ?.forEach((item, i) => {
-        const div = document.createElement("div")
-        div.innerHTML = `
-            <span class="circle">${i}</span>
-            <p>${item.coachName}</p>
-        `
-        coachDisplay.appendChild(div)
-    })
-}
-
-displayCoach()
-
-// Get members data from localStorage
-const members = JSON.parse(localStorage.getItem("members"))
-
-// Display members data
-function displayMembers(){
-    membersDisplay.innerHTML = ""
-    members
-    ?.slice(0, 3)
-    ?.forEach((item, i) => {
-        const div = document.createElement("div")
-        div.innerHTML = `
-            <div>
-                <div class="circle">${i}</div>
-            </div>
-            <div>
-                <p>${item.name}</p>
-            </div>
-            <div>
-                <i class="fa-solid fa-ellipsis-vertical"></i>
-            </div>
-        `
-        membersDisplay.appendChild(div)
-    })
-}
-
-displayMembers()
-
-// Get inventory data from localStorage
-
-const inventory = JSON.parse(localStorage.getItem("equipment"))
-
-// Display inventory data
-function displayInventory(){
-    inventoryDisplay.innerHTML = ""
-
-    console.log(inventory);
-    
-
-    inventory
-    ?.slice(0, 3)
-    ?.forEach((item, i) => {
-        const div = document.createElement("div")
-        div.style.display = 'flex'
-        div.style.gap = '10px'
-        div.innerHTML = `
-            <div>
-                <div class="circle">${i}</div>
-            </div>
-            <div>
-                <p>${item.equipmentName}</p>
-            </div>
-        `
-        inventoryDisplay.appendChild(div)
-    })
-}
-
-displayInventory()
 
 
 
@@ -259,11 +177,11 @@ async function updateUserDetails (){
     
 
 
-
-    // Reload the page after it successfull
-    window.location.reload()
     // Show modal. the first one is message and the second one is the message status
     showModal("Info Changed Successfully", 'success')
+
+    // Reinvoke the displayUserInfo function after it successfull
+    displayUserInfo()
 
     // Clear the input field
     usernameInput.value = ""
