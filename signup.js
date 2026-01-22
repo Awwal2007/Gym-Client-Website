@@ -60,6 +60,9 @@ form.addEventListener("submit", (e)=>{
     emailErr.textContent = ""
     retypePassErr.textContent = ""
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
     if(!username.value.trim()){
         usernameErr.textContent = "Username is required"
         return
@@ -68,6 +71,12 @@ form.addEventListener("submit", (e)=>{
         emailErr.textContent = "Email is required"
         return
     }
+
+    if(!emailRegex.test(email.value.trim())){
+        emailErr.textContent = "Enter a valid email address"
+        return
+    }
+
     if(!password.value.trim()){
         passwordErr.textContent = "Password is required"
         return
@@ -117,7 +126,7 @@ form.addEventListener("submit", (e)=>{
     }else{
         userDetils.push(details)
         saveDetails()
-        alert("Signup Successful")        
+        showModal("Signup Successful", "success")        
     }
     
     location.href = "index.html"
@@ -131,6 +140,36 @@ form.addEventListener("submit", (e)=>{
 
 })
 
+// Modal
+
+
+function showModal(message, status) {
+  const modal = document.getElementById("successModal");
+  modal.style.display = "flex";
+
+  const modalMain = document.getElementById("modal-main");
+  modalMain.textContent = `${status.charAt(0).toUpperCase() + status.slice(1)}!`;
+
+  if(status === "error"){
+    modalMain.style.color = "red"
+  }else if(status === "success"){
+    modalMain.style.color = "green"
+  }else{
+    modalMain.style.color = "yellow"
+  }
+
+
+  const modalMessage = document.getElementById("modal-message");
+  modalMessage.textContent = `${message}`;
+
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 8000);
+}
+
+function closeModal(){
+    modal.style.display = "none"
+}
 
 
 

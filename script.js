@@ -5,9 +5,10 @@ const password = document.getElementById("password")
 const checkBox = document.getElementById("check")
 const eyeIcon = document.getElementById("eye-icon")
 
+
 let userDetils = JSON.parse(localStorage.getItem("users")) || []
 
-form.addEventListener("submit", (e)=>{
+form.addEventListener("submit", async(e)=>{
     e.preventDefault()
 
     if(!email.value.trim() || !password.value.trim()){
@@ -18,7 +19,6 @@ form.addEventListener("submit", (e)=>{
     const find = userDetils.find(item =>{
         return item.email === email.value
     })
-
     
     
 
@@ -36,8 +36,11 @@ form.addEventListener("submit", (e)=>{
             }
 
 
-            alert("Login successfull")
-            location.href = "dashboard.html";
+            await showModal("Login successfull", "success")
+
+            setTimeout(()=>{
+                location.href = "dashboard.html";            
+            }, 1000)
         }
     }else{
         errorP.textContent = "No account found, create new account. redirecting ..."
@@ -62,4 +65,34 @@ eyeIcon.addEventListener("click", ()=>{
     }
 })
 
-// const save
+
+// modal
+
+
+function showModal(message, status) {
+  const modal = document.getElementById("successModal");
+  modal.style.display = "flex";
+
+  const modalMain = document.getElementById("modal-main");
+  modalMain.textContent = `${status.charAt(0).toUpperCase() + status.slice(1)}!`;
+
+  if(status === "error"){
+    modalMain.style.color = "red"
+  }else if(status === "success"){
+    modalMain.style.color = "green"
+  }else{
+    modalMain.style.color = "yellow"
+  }
+
+
+  const modalMessage = document.getElementById("modal-message");
+  modalMessage.textContent = `${message}`;
+
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 8000);
+}
+
+function closeModal(){
+    modal.style.display = "none"
+}

@@ -40,7 +40,7 @@ function displayUserInfo() {
         userEmail.textContent = loggedUser.email
         // greetingName.textContent = loggedUser.username.split(" ")[0]
     }else{
-        alert("User Not logged in, Redirecting to login....")
+        showModal("User Not logged in, Redirecting to login....", "error")
         location.href = "index.html"
     }
 }
@@ -140,8 +140,9 @@ form.addEventListener("submit", (e)=>{
     previewImage.src = ""
 
     form.reset()
-    displayCoach()
+    displayCoach(coach)
     closePopUp()
+    showModal("Coach Added Successfully", "success")
 })
 
 function saveCoachToLocalStorage (){
@@ -245,11 +246,12 @@ submitEdited.addEventListener("click", async ()=>{
 
     coach.push(updatedData)
 
-    await saveCoachToLocalStorage()
+    saveCoachToLocalStorage()
 
     form.reset()
-    displayCoach()
+    displayCoach(coach)
     closePopUp()
+    showModal("Edited Successfully", "success")
 })
 
 
@@ -274,11 +276,49 @@ function edit(id){
 }
 
 
+select.addEventListener('change', ()=>{
+    displayCoach(coach)
+})
+
 
 
 function openPopUp(){
     document.querySelector(".overlay").style.display = "flex"
 }
+
 function closePopUp(){
     document.querySelector(".overlay").style.display = "none"
+}
+
+
+
+// Alert Modal
+
+
+function showModal(message, status) {
+  const modal = document.getElementById("successModal");
+  modal.style.display = "flex";
+
+  const modalMain = document.getElementById("modal-main");
+  modalMain.textContent = `${status.charAt(0).toUpperCase() + status.slice(1)}!`;
+
+  if(status === "error"){
+    modalMain.style.color = "red"
+  }else if(status === "success"){
+    modalMain.style.color = "green"
+  }else{
+    modalMain.style.color = "yellow"
+  }
+
+
+  const modalMessage = document.getElementById("modal-message");
+  modalMessage.textContent = `${message}`;
+
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 8000);
+}
+
+function closeModal(){
+    modal.style.display = "none"
 }

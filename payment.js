@@ -23,6 +23,7 @@ const userToken = JSON.parse(localStorage.getItem("userToken")) || JSON.parse(se
 const users = JSON.parse(localStorage.getItem("users"))
 let loggedUser;
 
+// display user informations
 function displayUserInfo() {
 
     if(userToken){
@@ -33,7 +34,7 @@ function displayUserInfo() {
         userName.textContent = loggedUser.username
         userEmail.textContent = loggedUser.email
     }else{
-        alert("User Not logged in, Redirecting to login....")
+        showModal("User Not logged in, Redirecting to login....", "error")
         location.href = "index.html"
     }
 }
@@ -42,7 +43,6 @@ displayUserInfo()
 
 
 // Logout Fuctionality
-
 function logout() {
     if(JSON.parse(localStorage.getItem("userToken")) || JSON.parse(sessionStorage.getItem("userToken"))){
         localStorage.removeItem("userToken")
@@ -53,6 +53,7 @@ function logout() {
 }
 
 
+// arm Burger event listener click for the mobile view of the website
 armBurger.addEventListener("click", ()=> {
     const ul = document.querySelector("ul")
     if(armBurger.classList.contains("fa-xmark")){
@@ -63,9 +64,12 @@ armBurger.addEventListener("click", ()=> {
     ul.classList.toggle("d-none")
 })
 
+
+// A variable that is an empty array and also payment data from the local storage
 let payment = JSON.parse(localStorage.getItem("payment")) || []
 
 
+// Form event listener to collect the input value in the form
 form.addEventListener("submit", async(e)=> {
     e.preventDefault()
     nameOfMemErr.textContent = ""
@@ -86,7 +90,7 @@ form.addEventListener("submit", async(e)=> {
 
     saveToLocalStorage()
 
-    alert("Payment successfull")
+    showModal("Payment successfull", "success")
 
     form.reset()
     
@@ -98,6 +102,41 @@ form.addEventListener("submit", async(e)=> {
 })
 
 
+// Function to save to localstorage
+
 function saveToLocalStorage(){
     localStorage.setItem("payment", JSON.stringify(payment))
+}
+
+
+
+// alert Modal
+
+function showModal(message, status) {
+  const modal = document.getElementById("successModal");
+  modal.style.display = "flex";
+
+  const modalMain = document.getElementById("modal-main");
+  modalMain.textContent = `${status.charAt(0).toUpperCase() + status.slice(1)}!`;
+
+  if(status === "error"){
+    modalMain.style.color = "red"
+  }else if(status === "success"){
+    modalMain.style.color = "green"
+  }else{
+    modalMain.style.color = "yellow"
+  }
+
+
+  const modalMessage = document.getElementById("modal-message");
+  modalMessage.textContent = `${message}`;
+
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 8000);
+}
+
+// close Modal
+function closeModal(){
+    modal.style.display = "none"
 }

@@ -21,7 +21,7 @@ function displayUserInfo() {
         userName.textContent = loggedUser.username
         userEmail.textContent = loggedUser.email
     }else{
-        alert("User Not logged in, Redirecting to login....")
+        showModal("User Not logged in, Redirecting to login....", "error")
         location.href = "index.html"
     }
 }
@@ -98,3 +98,33 @@ select.addEventListener('change', ()=>{
     displayPayment(payments)
 })
 
+
+// Modal
+
+function showModal(message, status) {
+  const modal = document.getElementById("successModal");
+  modal.style.display = "flex";
+
+  const modalMain = document.getElementById("modal-main");
+  modalMain.textContent = `${status.charAt(0).toUpperCase() + status.slice(1)}!`;
+
+  if(status === "error"){
+    modalMain.style.color = "red"
+  }else if(status === "success"){
+    modalMain.style.color = "green"
+  }else{
+    modalMain.style.color = "yellow"
+  }
+
+
+  const modalMessage = document.getElementById("modal-message");
+  modalMessage.textContent = `${message}`;
+
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 8000);
+}
+
+function closeModal(){
+    modal.style.display = "none"
+}

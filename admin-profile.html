@@ -147,9 +147,9 @@
                             <button id="cancel" onclick="cancelDisabled()">Cancel</button>
                         </div>
                     </div>
-                    <div class="register-admin-btn">
+                    <a href="/signup.html" class="register-admin-btn">
                         Register New Admin Account
-                    </div>
+                    </a>
                     <div class="grid-item">
                         <div class="input-container">
                             <div class="input">
@@ -167,7 +167,7 @@
                         </div>
                         <p id="passwordError" class="errorP"></p>
                         <div class="action-buttons">
-                            <button onclick="updateUserPass()">
+                            <button id="change-btn" disabled onclick="updateUserPass()">
                                 Change
                             </button>
                             <button onclick="cancelDisabled()">Clear</button>
@@ -178,6 +178,14 @@
             </div>
         </div>
     </section>
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modal-main"></h2>
+            <p id="modal-message"></p>
+            <button class="modal-button" onclick="closeModal()">OK</button>
+        </div>
+    </div>
 
     <script src="dashboard.js"></script>
 </body>

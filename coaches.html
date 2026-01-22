@@ -157,7 +157,7 @@
                 <div class="inventory-table-header">
                     <div class="entity">
                         <p>Show Entities</p>
-                        <select onclick="displayCoach()" id="entity">
+                        <select id="entity">
                             <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="20">20</option>
@@ -179,7 +179,16 @@
                 </table>
             </div>
         </div>
+
     </section>
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modal-main">✅ Success!</h2>
+            <p id="modal-message">Your action was completed successfully.</p>
+            <button class="modal-button" onclick="closeModal()">OK</button>
+        </div>
+    </div>
 
     <script src="coaches.js"></script>
 </body>

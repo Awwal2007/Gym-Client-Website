@@ -133,9 +133,47 @@ h2{
     /* text-align: center; */
 }
 
+
+/* Modal */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  min-width: 250px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px
+}
+
+.modal-content h2 {
+  color: green;
+}
+
+.modal-content button {
+  background-color: #1A1363;
+  color: white;
+  padding:6px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
 /* Media Query */
-
-
 
 @media screen and (max-width: 1068px) {
     .signin-illustration{

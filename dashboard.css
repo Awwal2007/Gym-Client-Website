@@ -329,6 +329,10 @@ section{
     display: block;
     border-radius: 100%;
     background: #1A1363;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 .dashboard .content .left .middle .middle-content-cont .sales-container{
     display: flex;
@@ -428,6 +432,10 @@ section{
     height: 30px;
     background: #1A1363;
     border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white
 }
 .dashboard .content .left .bottom>div .members-container .members-infos{
     display: flex;
@@ -578,6 +586,7 @@ section{
     text-align: center;
     height: 25px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 
@@ -1154,6 +1163,47 @@ section{
     font-weight: bold;
     font-size: .7rem !important;
 }
+
+
+
+/* Alert Modal */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  min-width: 250px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px
+}
+
+.modal-content h2 {
+  color: green;
+}
+
+.modal-content button {
+  background-color: #1A1363;
+  color: white;
+  padding:6px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
 
 
 
