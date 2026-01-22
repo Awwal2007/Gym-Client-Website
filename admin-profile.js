@@ -281,15 +281,33 @@ function showModal(message, status) {
   modal.style.display = "flex";
 
   const modalMain = document.getElementById("modal-main");
-  modalMain.textContent = `${status.charAt(0).toUpperCase() + status.slice(1)}!`;
+  let emoji;
 
-  if(status === "error"){
+   if(status === "error"){
     modalMain.style.color = "red"
+    emoji = "❌"
   }else if(status === "success"){
     modalMain.style.color = "green"
+    emoji = "🎉"
   }else{
     modalMain.style.color = "yellow"
   }
+
+
+  modalMain.textContent = `${emoji}${status.charAt(0).toUpperCase() + status.slice(1)}!`;
+  
+
+     if(status === "error"){
+    modalMain.style.color = "red"
+    emoji = "❌"
+  }else if(status === "success"){
+    modalMain.style.color = "green"
+    emoji = "🎉"
+  }else{
+    modalMain.style.color = "yellow"
+  }
+
+
 
 
   const modalMessage = document.getElementById("modal-message");
