@@ -135,7 +135,6 @@ function displayPlan(data){
     }
     
     data
-    // .reverse()
     ?.slice(0, select.value)
     ?.forEach(item => {
         const tr = document.createElement("tr")
@@ -224,7 +223,7 @@ submitEdited.addEventListener("click", async ()=>{
     await savePlanToLocalStorage()
 
     form.reset()
-    displayPlan()
+    displayPlan(plan)
 })
 
 
@@ -245,6 +244,8 @@ function edit(id){
     const remainingPlan = plan.filter(item => item.id !== id)
     
     plan = remainingPlan
+
+    
 }
 
 
