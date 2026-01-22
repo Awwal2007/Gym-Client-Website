@@ -135,6 +135,9 @@ function displayPlan(data){
     }
     
     data
+    ?.slice()
+    ?.reverse()
+    // .sort((a,b)=>(b.createdAt -a.createdAt))
     ?.slice(0, select.value)
     ?.forEach(item => {
         const tr = document.createElement("tr")

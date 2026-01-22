@@ -1111,7 +1111,7 @@ section{
     border-radius: 10px;
     padding: 3px 5px;
     background: #555B95;
-    color: #1A1363;
+    color: white;
 }
 
 .report-table .report-table-header .search-container{
@@ -1126,15 +1126,15 @@ section{
 }
 .report-table .report-table-header .search-container input{
     background: #555B95;
+    color: white;
     border: none;
     outline: none;
-    color: #1A1363;
     padding: 4px 16px;
     width: 150px;
     border-radius: 10px;
 }
 .report-table .report-table-header .search-container input::placeholder{
-    color: #1A1363;
+    color: white;
 }
 
 

@@ -249,7 +249,7 @@ submitEdited.addEventListener("click", async ()=>{
     await saveEquipmentToLocalStorage()
 
     form.reset()
-    displayEquipment()
+    displayEquipment(equipment)
     closePopUp()
 })
 
