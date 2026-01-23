@@ -54,7 +54,7 @@ const payments = JSON.parse(localStorage.getItem("payment"))
 function displayPayment(payment){
     tbody.innerHTML = ""
     if(payment.length === 0){
-        tbody.innerHTML = "No item match your search"
+        tbody.innerHTML = "No item found"
         return
     }
 

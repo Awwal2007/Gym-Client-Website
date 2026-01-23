@@ -155,7 +155,7 @@ function displayCoach(data){
     tbody.innerHTML = ""
 
     if(data.length === 0){
-        tbody.innerHTML = "No item match your search"
+        tbody.innerHTML = "No item found"
         return
     }
     
