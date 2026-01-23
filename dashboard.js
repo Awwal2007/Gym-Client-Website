@@ -135,7 +135,7 @@ function displayMembers(){
     membersDisplay.innerHTML = ""
 
     if(members.length === 0){
-        membersDisplay.innerHTML = "No Members added yet"
+        membersDisplay.innerHTML = "No Members added yet "
         return
     }
 
@@ -171,7 +171,7 @@ function displayInventory(){
     console.log(inventory);
 
     if(inventory.length === 0){
-        inventoryDisplay.innerHTML = "No Inventory added yet"
+        inventoryDisplay.innerHTML = "No Inventory added yet" 
         return
     }
     

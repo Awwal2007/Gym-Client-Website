@@ -68,7 +68,7 @@ function displayMembers(data){
     tbody.innerHTML = ""
 
     if(data.length === 0){
-        tbody.innerHTML = "No item found"
+        tbody.innerHTML = "No item found" 
         return
     }
     
