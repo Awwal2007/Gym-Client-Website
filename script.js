@@ -36,7 +36,7 @@ form.addEventListener("submit", async(e)=>{
             }
 
 
-            await showModal("Welcome Back", "success")
+            showModal("Login Successful, Welcome Back", "success")
 
             setTimeout(()=>{
                 location.href = "dashboard.html";            

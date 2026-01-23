@@ -109,6 +109,10 @@ const coach = JSON.parse(localStorage.getItem("coach"))
 // Display coach data
 function displayCoach(){
     coachDisplay.innerHTML = ""
+    if(coach.length === 0){
+        coachDisplay.innerHTML = "No Coach added yet"
+        return
+    }
     coach
     ?.slice(0, 3)
     ?.forEach((item, i) => {
@@ -129,6 +133,12 @@ const members = JSON.parse(localStorage.getItem("members"))
 // Display members data
 function displayMembers(){
     membersDisplay.innerHTML = ""
+
+    if(members.length === 0){
+        membersDisplay.innerHTML = "No Members added yet"
+        return
+    }
+
     members
     ?.slice(0, 3)
     ?.forEach((item, i) => {
@@ -159,6 +169,11 @@ function displayInventory(){
     inventoryDisplay.innerHTML = ""
 
     console.log(inventory);
+
+    if(inventory.length === 0){
+        inventoryDisplay.innerHTML = "No Inventory added yet"
+        return
+    }
     
 
     inventory
