@@ -42,7 +42,7 @@ function displayUserInfo() {
     if(userToken){
 
         // filter user data with this userToken
-        loggedUser = users.find(f=> f.id === userToken)
+        loggedUser = users.find(f => f.id === userToken)
 
         // Display the loggedUser username and email
         userName.textContent = loggedUser.username
@@ -51,15 +51,6 @@ function displayUserInfo() {
         // if greetingName display the user FirstName
         if(greetingName) greetingName.textContent = loggedUser.username.split(" ")[0]
 
-        // for Admin profile page. display username and email
-        if(username && email){
-            username.textContent = loggedUser.username
-            email.textContent = loggedUser.email
-        }
-        // for Admin profile page. if there is contact, display it
-        if(loggedUser.contact && contact){
-            contact.textContent = loggedUser.contact
-        }
     }else{
         // Alert modal. the first argument is message and the second one is the the status of the alert
         showModal("User Not logged in, Redirecting to login....", 'error')
@@ -82,6 +73,7 @@ function logout() {
         localStorage.removeItem("userToken")
         sessionStorage.removeItem("userToken")
     }
+
     // Redirect to index.html. Which is login page
     location.href = "index.html"
 }
@@ -109,14 +101,17 @@ const coach = JSON.parse(localStorage.getItem("coach"))
 // Display coach data
 function displayCoach(){
     coachDisplay.innerHTML = ""
+
     if(coach.length === 0){
         coachDisplay.innerHTML = "No Coach added yet"
         return
     }
+
     coach
     ?.slice(0, 3)
     ?.forEach((item, i) => {
         const div = document.createElement("div")
+        
         div.innerHTML = `
             <span class="circle">${i}</span>
             <p>${item.coachName}</p>

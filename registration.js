@@ -22,6 +22,7 @@ const availMembership = document.getElementById("availMembership")
 
 const userToken = JSON.parse(localStorage.getItem("userToken")) || JSON.parse(sessionStorage.getItem("userToken")) || ""
 const users = JSON.parse(localStorage.getItem("users"))
+
 let loggedUser;
 
 function displayUserInfo() {
@@ -78,6 +79,7 @@ const data = params.get("data")
 
 
 if(data){
+    
     const find = members.find(item => {
         return item.id === data
     })
@@ -129,8 +131,7 @@ if(data){
             return
         }
         
-        const id =`SFM
-        ${Math.floor(Math.random() * 10000)}${members.length + 1}` 
+        const id =`SFM ${Math.floor(Math.random() * 10000)}${members.length + 1}` 
 
         let details = {
             id: id,

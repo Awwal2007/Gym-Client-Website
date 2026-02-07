@@ -60,22 +60,23 @@ form.addEventListener("submit", (e)=>{
     emailErr.textContent = ""
     retypePassErr.textContent = ""
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
     if(!username.value.trim()){
         usernameErr.textContent = "Username is required"
         return
     }
+
     if(!email.value.trim()){
         emailErr.textContent = "Email is required"
         return
     }
 
-    if(!emailRegex.test(email.value.trim())){
-        emailErr.textContent = "Enter a valid email address"
-        return
-    }
+    // if(!emailRegex.test(email.value.trim())){
+    //     emailErr.textContent = "Enter a valid email address"
+    //     return
+    // }
 
     if(!password.value.trim()){
         passwordErr.textContent = "Password is required"
@@ -104,6 +105,7 @@ form.addEventListener("submit", (e)=>{
     }
 
     const id = new Date * Math.floor(Math.random() * 100)
+    
 
     let details = {
         username: username.value.trim(),
@@ -112,7 +114,7 @@ form.addEventListener("submit", (e)=>{
         id: id
     }
 
-    console.log(details.id);
+
     
 
     const find = userDetils.find(ele => {
@@ -148,6 +150,7 @@ function showModal(message, status) {
   modal.style.display = "flex";
 
   const modalMain = document.getElementById("modal-main");
+  
   let emoji;
 
    if(status === "error"){
@@ -164,15 +167,15 @@ function showModal(message, status) {
   modalMain.textContent = `${emoji}${status.charAt(0).toUpperCase() + status.slice(1)}!`;
   
 
-     if(status === "error"){
-    modalMain.style.color = "red"
-    emoji = "❌"
-  }else if(status === "success"){
-    modalMain.style.color = "green"
-    emoji = "🎉"
-  }else{
-    modalMain.style.color = "yellow"
-  }
+//     if(status === "error"){
+//     modalMain.style.color = "red"
+//     emoji = "❌"
+//   }else if(status === "success"){
+//     modalMain.style.color = "green"
+//     emoji = "🎉"
+//   }else{
+//     modalMain.style.color = "yellow"
+//   }
 
 
 

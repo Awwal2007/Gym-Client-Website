@@ -44,6 +44,8 @@ function displayUserInfo() {
         // filter user data with this userToken
         loggedUser = users.find(f=> f.id === userToken)
 
+        userName.textContent = loggedUser.username
+        userEmail.textContent = loggedUser.email
         // if greetingName display the user FirstName
         if(greetingName) greetingName.textContent = loggedUser.username.split(" ")[0]
 
@@ -111,7 +113,9 @@ updateProfile.addEventListener("click", ()=>{
     dis.forEach((item)=>{
         item.disabled = false        
     })
+
     const changeBtn = document.getElementById("change-btn")
+
     changeBtn.disabled = false
     saveBtn.disabled = false
 
@@ -127,6 +131,7 @@ function cancelDisabled() {
     dis.forEach((item)=>{
         item.disabled = true
     })
+
     saveBtn.disabled = true
 
     const changeBtn = document.getElementById("change-btn")
@@ -154,7 +159,9 @@ async function updateUserDetails (){
     // get all users in the localstorage
     const storedUser = JSON.parse(localStorage.getItem("users"))
     // get all users except the current logged in user using filter method 
-    const remainingUser = storedUser.filter(i=> i.id !== loggedUser.id)
+    
+    const remainingUser = storedUser.filter(i => i.id !== loggedUser.id)
+    
     // get the current user data
     const user = storedUser.find(i=> i.id === loggedUser.id)
 
@@ -172,6 +179,7 @@ async function updateUserDetails (){
         localStorage.setItem("users", JSON.stringify(allUsers))
     }else{
         showModal("Login expired.. Please login again", "error")
+        return
     }
 
     
@@ -193,6 +201,7 @@ async function updateUserDetails (){
     dis.forEach((i)=> {
         i.disabled = true
     })
+
 }
 
 // Update user password
@@ -258,6 +267,7 @@ async function updateUserPass() {
     // localStorage.setItem("loggedUser", JSON.stringify(newLoggedUser))
     window.location.reload()
     showModal("Password Changed Successfully", "success")
+    
     newPassword.value = ""
     newRePassword.value = ""
     currentPassword.value = ""
@@ -294,19 +304,19 @@ function showModal(message, status) {
   }
 
 
-  modalMain.textContent = `${emoji}${status.charAt(0).toUpperCase() + status.slice(1)}!`;
   
-
-     if(status === "error"){
-    modalMain.style.color = "red"
-    emoji = "❌"
-  }else if(status === "success"){
-    modalMain.style.color = "green"
-    emoji = "🎉"
-  }else{
-    modalMain.style.color = "yellow"
-  }
-
+  
+  if(status === "error"){
+      modalMain.style.color = "red"
+      emoji = "❌"
+    }else if(status === "success"){
+        modalMain.style.color = "green"
+        emoji = "🎉"
+    }else{
+        modalMain.style.color = "yellow"
+    }
+    
+    modalMain.textContent = `${emoji}${status.charAt(0).toUpperCase() + status.slice(1)}!`;
 
 
 
