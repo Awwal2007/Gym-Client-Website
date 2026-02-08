@@ -108,6 +108,7 @@ form.addEventListener("submit", (e)=>{
     console.log(formData);
 
     plan.push(formData)
+
     savePlanToLocalStorage()
 
     planNameErr.textContent = ""
@@ -135,12 +136,13 @@ function displayPlan(data){
     }
     
     data
-    ?.slice()
+    // ?.slice()
     ?.reverse()
     // .sort((a,b)=>(b.createdAt -a.createdAt))
     ?.slice(0, select.value)
     ?.forEach(item => {
         const tr = document.createElement("tr")
+        
         tr.innerHTML = `
             <td>${item.planName}</td>
             <td>${item.planValidity}</td>
@@ -253,9 +255,9 @@ function edit(id){
 
 
 // Modal
-const modal = document.getElementById("successModal");
 
 function showModal(message, status) {
+    const modal = document.getElementById("successModal");
   modal.style.display = "flex";
 
   const modalMain = document.getElementById("modal-main");
@@ -286,6 +288,7 @@ function showModal(message, status) {
 }
 
 function closeModal(){
+    const modal = document.getElementById("successModal");
     modal.style.display = "none"
 }
 

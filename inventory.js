@@ -76,8 +76,8 @@ let filteredEquipment = [];
 
 imageInpt.addEventListener("change", (e)=>{
     
-
     const file = e.target.files[0]
+
     selectedImageName.style.maxWidth = "200px"
     selectedImageName.style.textWrap = "wrap"
     selectedImageName.textContent = file ? file.name : "No file chosen"
@@ -164,6 +164,7 @@ function displayEquipment(data){
     ?.slice(0, select.value)
     .forEach(item => {
         const tr = document.createElement("tr")
+        
         tr.innerHTML = `
             <td>${item.equipmentName}</td>
             <td>${item.equipmentStatus}</td>
@@ -280,6 +281,7 @@ function edit(id){
 function openPopUp(){
     document.querySelector(".overlay").style.display = "flex"
 }
+
 function closePopUp(){
     document.querySelector(".overlay").style.display = "none"
 }
@@ -287,10 +289,10 @@ function closePopUp(){
 
 
 // Modal
-const modal = document.getElementById("successModal");
 
 function showModal(message, status) {
-  modal.style.display = "flex";
+    const modal = document.getElementById("successModal");
+    modal.style.display = "flex";
 
   const modalMain = document.getElementById("modal-main");
   let emoji;
@@ -331,5 +333,6 @@ function showModal(message, status) {
 }
 
 function closeModal(){
+    const modal = document.getElementById("successModal");
     modal.style.display = "none"
 }

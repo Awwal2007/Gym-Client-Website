@@ -92,6 +92,7 @@ if(data){
     priceInp.value = find.price
     dateOfJoinInp.value = find.date
     contactNumInp.value = find.contact
+
     availMembership.textContent = "Edit"
     availMembership.removeAttribute("type")
 
@@ -154,6 +155,7 @@ if(data){
 
         params.delete("data")
         form.reset()
+
         location.href = "members.html"
 
     })
@@ -164,6 +166,7 @@ if(data){
 
 form.addEventListener("submit", async(e)=> {    
     e.preventDefault()
+
     nameOfPartInpErr.textContent = ""
     emailOfPartInpErr.textContent = ""
     planInpErr.textContent = ""
@@ -237,9 +240,9 @@ function saveMembers(){
 
 
 // Modal
-const modal = document.getElementById("successModal");
 
 function showModal(message, status) {
+    const modal = document.getElementById("successModal");
   modal.style.display = "flex";
 
   const modalMain = document.getElementById("modal-main");
@@ -281,5 +284,6 @@ function showModal(message, status) {
 }
 
 function closeModal(){
+    const modal = document.getElementById("successModal");
     modal.style.display = "none"
 }

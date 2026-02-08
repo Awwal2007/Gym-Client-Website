@@ -163,7 +163,7 @@ async function updateUserDetails (){
     const remainingUser = storedUser.filter(i => i.id !== loggedUser.id)
     
     // get the current user data
-    const user = storedUser.find(i=> i.id === loggedUser.id)
+    const user = storedUser.find(i => i.id === loggedUser.id)
 
     // update user details by using spread operator and add the new details from user input
     const updatedUser = {...user, username: usernameInput.value.trim(), contact: contactInput.value.trim(), email: emailInput.value.trim()}   
@@ -285,10 +285,10 @@ async function updateUserPass() {
 
 // Modal
 // show modal function. it receive two parameter. message and status
-const modal = document.getElementById("successModal");
 
 function showModal(message, status) {
-  modal.style.display = "flex";
+    const modal = document.getElementById("successModal");
+    modal.style.display = "flex";
 
   const modalMain = document.getElementById("modal-main");
   let emoji;
@@ -329,5 +329,6 @@ function showModal(message, status) {
 }
 
 function closeModal(){
+    const modal = document.getElementById("successModal");
     modal.style.display = "none"
 }

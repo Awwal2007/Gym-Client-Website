@@ -8,7 +8,6 @@ const armBurger = document.getElementById("arm-burger")
 const username = document.getElementById("username")
 const email = document.getElementById("email")
 const contact = document.getElementById("contact")
-const updateProfile = document.getElementById("updateProfile")
 const dis = document.querySelectorAll(".dis")
 const cancel = document.getElementById("cancel")
 const greetingName = document.getElementById("greetingName")
@@ -191,185 +190,11 @@ function displayInventory(){
 
 displayInventory()
 
-
-
-// Admin profile
-
-// edit profile
-
-
-updateProfile.addEventListener("click", ()=>{
-    
-    dis.forEach((item)=>{
-        item.disabled = false        
-    })
-    const changeBtn = document.getElementById("change-btn")
-    changeBtn.disabled = false
-    saveBtn.disabled = false
-
-    usernameInput.value = loggedUser.username
-    emailInput.value = loggedUser.email
-    if(loggedUser.contact)   contactInput.value = loggedUser.contact
-})
-
-// Add disabled from the input and also add disabled to the save button and change button
-
-function cancelDisabled() {
-
-    dis.forEach((item)=>{
-        item.disabled = true
-    })
-    saveBtn.disabled = true
-
-    const changeBtn = document.getElementById("change-btn")
-    changeBtn.disabled = true
-
-    usernameInput.value = ""
-    contactInput.value = ""
-    emailInput.value = ""
-    currentPassword.value = ""
-    newPassword.value = ""
-    newRePassword.value = ""
-
-}
-
-
-
-// Update user details
-async function updateUserDetails (){
-    // Validate the input field
-    if(!usernameInput.value.trim() && !contactInput.value.trim() && !emailInput.value.trim()){
-        showModal("Invalid Input", "error")
-        return
-    }
-
-    // get all users in the localstorage
-    const storedUser = JSON.parse(localStorage.getItem("users"))
-    // get all users except the current logged in user using filter method 
-    const remainingUser = storedUser.filter(i=> i.id !== loggedUser.id)
-    // get the current user data
-    const user = storedUser.find(i=> i.id === loggedUser.id)
-
-    // update user details by using spread operator and add the new details from user input
-    const updatedUser = {...user, username: usernameInput.value.trim(), contact: contactInput.value.trim(), email: emailInput.value.trim()}   
-    
-    // Put the remaining User and the updated user in an array using spread operator
-    const allUsers = [...remainingUser, updatedUser]
-
-
-    // Check if the user is logged in again and save all users to the localStorage
-    if(JSON.parse(localStorage.getItem("userToken"))){
-        localStorage.setItem("users", JSON.stringify(allUsers))
-    }else if(JSON.parse(sessionStorage.getItem("userToken"))){
-        localStorage.setItem("users", JSON.stringify(allUsers))
-    }else{
-        showModal("Login expired.. Please login again", "error")
-    }
-
-    
-
-
-
-    // Reload the page after it successfull
-    window.location.reload()
-    // Show modal. the first one is message and the second one is the message status
-    showModal("Info Changed Successfully", 'success')
-
-    // Clear the input field
-    usernameInput.value = ""
-    contactInput.value = ""
-    emailInput.value = ""
-    
-
-    // make all the input disabled
-    dis.forEach((i)=> {
-        i.disabled = true
-    })
-}
-
-// Update user password
-
-async function updateUserPass() {
-    
-    passwordError.textContent = ""
-    
-    // Check if the password is less than 8 and return an error message
-    if(newPassword.value.length < 8){
-        passwordError.textContent = "Password must be up to 8 digits"
-        return;
-    }
-
-    // Validate all the input field
-    
-    if(!newPassword.value.trim() && !newRePassword.value.trim() && !currentPassword.value.trim()){
-        passwordError.textContent = "Invalid Input"
-        return
-    }
-
-    // Check if the new password and the new retype password is not correct and return and error message
-    if(newPassword.value.trim() !== newRePassword.value.trim()){
-        passwordError.textContent = "Password and Retype password does not match"
-        return
-    }
-       
-    
-    
-    // Get all users from the localStorage
-    const storedUser = JSON.parse(localStorage.getItem("users"))
-    // Get all users except the loggedin user
-    const remainingUser = storedUser.filter(i=> i.id !== loggedUser.id)
-    // Get the loggedin user
-    const user = storedUser.find(i=> i.id === loggedUser.id)
-    
-    
-    // Check if the current password is correct with the password user password. If not return an error message 
-    if(currentPassword.value.trim() !== user.password){
-        passwordError.textContent = "Current password is incorrect"
-        return
-    }
-    
-    // update the password
-    const updatedUser = {...user, password: newPassword.value.trim()}   
-    
-    // const updated = localStorage.setItem("users", JSON.stringify())
-    // 
-    const allUsers = [...remainingUser, updatedUser]
-    
-    if(JSON.parse(localStorage.getItem("userToken"))){
-        localStorage.setItem("users", JSON.stringify(allUsers))
-    }else if(JSON.parse(sessionStorage.getItem("userToken"))){
-        localStorage.setItem("users", JSON.stringify(allUsers))
-    }else{
-        showModal("Login expired.. Please login again", "error")
-    }
-    
-    
-    
-    
-    // const newLoggedUser = storedUser.find(i=> i.id === loggedUser.id)
-    // localStorage.setItem("loggedUser", JSON.stringify(newLoggedUser))
-    window.location.reload()
-    showModal("Password Changed Successfully", "success")
-    newPassword.value = ""
-    newRePassword.value = ""
-    currentPassword.value = ""
-    passwordError.textContent = ""
-
-    const changeBtn = document.getElementById("change-btn")
-    changeBtn.disabled = true
-    
-    dis.forEach((i)=> {
-        i.disabled = true
-    })
-}
-
-
-
 // Modal
 // show modal function. it receive two parameter. message and status
-const modal = document.getElementById("successModal");
 
 function showModal(message, status) {
+    const modal = document.getElementById("successModal");
   modal.style.display = "flex";
 
   const modalMain = document.getElementById("modal-main");
@@ -411,5 +236,6 @@ function showModal(message, status) {
 }
 
 function closeModal(){
+    const modal = document.getElementById("successModal");
     modal.style.display = "none"
 }

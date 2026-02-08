@@ -82,6 +82,7 @@ form.addEventListener("submit", (e)=>{
         passwordErr.textContent = "Password is required"
         return
     }
+
     if(!reTypePassword.value.trim()){
         retypePassErr.textContent = "Retype Password is required"
         return
@@ -144,16 +145,16 @@ form.addEventListener("submit", (e)=>{
 
 // Modal
 
-const modal = document.getElementById("successModal");
 
 function showModal(message, status) {
+    const modal = document.getElementById("successModal");
   modal.style.display = "flex";
 
   const modalMain = document.getElementById("modal-main");
   
   let emoji;
 
-   if(status === "error"){
+    if(status === "error"){
     modalMain.style.color = "red"
     emoji = "❌"
   }else if(status === "success"){
@@ -189,6 +190,7 @@ function showModal(message, status) {
 }
 
 function closeModal(){
+    const modal = document.getElementById("successModal");
     modal.style.display = "none"
 }
 
