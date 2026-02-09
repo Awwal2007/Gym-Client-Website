@@ -67,6 +67,7 @@ armBurger.addEventListener("click", ()=> {
 
 // A variable that is an empty array and also payment data from the local storage
 let payment = JSON.parse(localStorage.getItem("payment")) || []
+const members = JSON.parse(localStorage.getItem("members"))
 
 
 // Form event listener to collect the input value in the form
@@ -77,27 +78,38 @@ form.addEventListener("submit", async(e)=> {
     planErr.textContent = ""
     priceErr.textContent = ""
 
-
-    const paymentData = {
-        name: nameOfMemInp.value.trim(),
-        date: dateJoinInp.value.trim(),
-        plan: planInp.value.trim(),
-        price: priceInp.value.trim()
-    }
-
-
-    payment.push(paymentData)
-
-    saveToLocalStorage()
-
-    showModal("Payment successfull", "success")
-
-    form.reset()
     
-    nameOfMemErr.textContent = ""
-    dateJoinErr.textContent = ""
-    planErr.textContent = ""
-    priceErr.textContent = ""
+    const find = members.find((item)=> {
+        return item.name.toLowerCase() === nameOfMemInp.value.trim().toLowerCase()
+    })
+
+
+    if(find){
+
+        const paymentData = {
+            name: nameOfMemInp.value.trim(),
+            date: dateJoinInp.value.trim(),
+            plan: planInp.value.trim(),
+            price: priceInp.value.trim()
+        }
+
+
+        payment.push(paymentData)
+
+        saveToLocalStorage()
+
+        showModal("Payment successfull", "success")
+
+        form.reset()
+        
+        nameOfMemErr.textContent = ""
+        dateJoinErr.textContent = ""
+        planErr.textContent = ""
+        priceErr.textContent = ""
+    }else{
+        nameOfMemErr.textContent = "Member does not exists"
+        return
+    }   
 
 })
 
